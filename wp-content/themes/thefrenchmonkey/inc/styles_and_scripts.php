@@ -1,22 +1,22 @@
 <?php
 function ajout_scripts() {
 
-// enregistrement d'un nouveau script
-wp_register_script('main_script', get_template_directory_uri() . '/scripts/main.js', array('jquery'),'1.1', true);
-
-// appel du script dans la page
+// enregistrement des scripts
+wp_register_script('main_script', JS_URL.'/main.js', array('jquery'),'1.1', true);
 wp_enqueue_script('main_script');
 
-// enregistrement d'un nouveau style
-wp_register_style( 'reset_style', get_template_directory_uri() . '/styles/reset.css' );
+wp_register_script('bootstrap_script', JS_URL.'/bootstrap.min.js', array('jquery'),'1.1', true);
+wp_enqueue_script('bootstrap_script');
 
-// appel du style dans la page
-wp_enqueue_style( 'reset_style' );// enregistrement d'un nouveau style
+// enregistrement des styles
+wp_register_style( 'reset_style', CSS_URL.'/reset.css' );
+wp_enqueue_style( 'reset_style' );
 
-wp_register_style( 'main_style', get_template_directory_uri() . '/styles/main.css' );
-
-// appel du style dans la page
+wp_register_style( 'main_style', CSS_URL.'/main.css' );
 wp_enqueue_style( 'main_style' );
+
+wp_register_style( 'main_style', CSS_URL.'/bootstrap.min.css' );
+wp_enqueue_style( 'bootstrap_style' );
 
 }
 

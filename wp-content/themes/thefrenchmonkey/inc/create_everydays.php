@@ -49,12 +49,12 @@ $labels = array(
         );
           register_taxonomy( $taxonomy, $object_type, $args );
 
-          $taxonomy = "vip";
+          $taxonomy = "renderer";
           $object_type = array("everydays");
 
           $args = array(
-              'label' => __( 'VIP' ),
-              'rewrite' => array( 'slug' => 'vip' ),
+              'label' => __( 'Renderer' ),
+              'rewrite' => array( 'slug' => 'renderer' ),
               'hierarchical' => true,
       );
               register_taxonomy( $taxonomy, $object_type, $args );

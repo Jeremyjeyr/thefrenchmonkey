@@ -4,7 +4,7 @@ function ajout_custom_type_init() {
 $post_type = "everydays";
 $labels = array(
         'name'               => 'Everydays',
-        'singular_name'      => 'everydays',
+        'singular_name'      => 'Everydays',
         'all_items'          => 'Tous les everydays',
         'add_new'            => 'Ajouter un everydays',
         'add_new_item'       => 'Ajouter un nouveau everydays',
@@ -38,7 +38,7 @@ $labels = array(
 
     register_post_type($post_type, $args );
 
-      $taxonomy = "sexe";
+      $taxonomy = "logiciel";
       $object_type = array("everydays");
 
       $args = array(
@@ -58,7 +58,7 @@ $labels = array(
               'hierarchical' => true,
       );
               register_taxonomy( $taxonomy, $object_type, $args );
-}           
+}
 add_action( 'init', 'ajout_custom_type_init' );
 
 

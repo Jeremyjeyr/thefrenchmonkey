@@ -15,7 +15,7 @@ wp_enqueue_style( 'reset_style' );
 wp_register_style( 'main_style', CSS_URL.'/main.css' );
 wp_enqueue_style( 'main_style' );
 
-wp_register_style( 'main_style', CSS_URL.'/bootstrap.min.css' );
+wp_register_style( 'bootstrap_style', CSS_URL.'/bootstrap.min.css' );
 wp_enqueue_style( 'bootstrap_style' );
 
 }

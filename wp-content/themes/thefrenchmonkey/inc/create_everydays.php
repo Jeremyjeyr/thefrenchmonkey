@@ -1,6 +1,6 @@
 <?php
 
-function ajout_custom_type_init() {
+function ajout_custom_type_init_everydays() {
 $post_type = "everydays";
 $labels = array(
         'name'               => 'Everydays',
@@ -59,7 +59,7 @@ $labels = array(
       );
               register_taxonomy( $taxonomy, $object_type, $args );
 }
-add_action( 'init', 'ajout_custom_type_init' );
+add_action( 'init', 'ajout_custom_type_init_everydays' );
 
 
 

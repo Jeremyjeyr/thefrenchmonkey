@@ -67,5 +67,34 @@ if ( $the_query1->have_posts() ) {
  // no posts found
 }
  ?>
-</section>
+ </section>
+
+ <?php
+ // The Loop for Everyday's
+ if ( $the_query2->have_posts() ) {
+ 	while ( $the_query2->have_posts() ) {
+ 		$the_query2->the_post();
+     ?>
+
+     <article>
+       <?php // Affichage de l'image
+
+       $image = get_field('image');
+
+       if( !empty($image) ): ?>
+
+       	<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" class="col-sm-2"/>
+
+       <?php endif; ?>
+
+      <h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_field('title'); ?></a></h3>
+    </article>
+    <?php
+ 	}
+   /* Restore original Post Data */
+              wp_reset_postdata();
+ } else {
+ 	// no posts found
+ }
+  ?>
 <?php get_footer(); //appel du template footer.php ?>

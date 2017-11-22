@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-    <head>
-        <meta charset="<?php bloginfo( 'charset' ); ?>" />
+  <head>
+    <meta charset="<?php bloginfo( 'charset' ); ?>" />
 
-        <!-- Appel du fichier style.css de notre thème -->
-        <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
+      <!-- Appel du fichier style.css de notre thème -->
+      <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 
-        <!--
-            Tout le contenu de la partie head de mon site
-         -->
-
-        <!-- Execution de la fonction wp_head() obligatoire ! -->
-        <?php wp_head(); ?>
+      <?php wp_head(); ?>
     </head>
+
+
     <body <?php body_class(); ?>>
-        <header id="header">
-        <!-- Tout le contenu de l entête de mon site -->
-        </header>
+      <header id="header" class="container">
+        <div class="header_text">
+          <?php
+              $args=array(
+                'theme_location' => 'header', // nom du slug
+                'menu' => 'header_fr', // nom à donner cette occurence du menu
+                'menu_class' => 'menu_header', // class à attribuer au menu
+                'menu_id' => 'header_id' // id à attribuer au menu
+                // voir les autres arguments possibles sur le codex
+              );
+                wp_nav_menu($args);
+
+                  ?>
+                  <a href="#"><img class="logo" src="http://localhost/thefrenchmonkey/wp-content/uploads/2017/11/logo.png" alt="logo_the_french_monkey">
+          </a>
+
+        </div>
+        <div class="footer">
+
+        </div>
+      </header>

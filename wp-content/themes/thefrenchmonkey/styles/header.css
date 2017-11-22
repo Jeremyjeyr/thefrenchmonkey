@@ -1,0 +1,40 @@
+/********************** LOGO **********************/
+
+.logo
+{
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+
+
+/********************** HEADER **********************/
+
+#header{
+  display: flex;
+  justify-content: space-between;
+  align-items : center;
+}
+
+.menu_header
+{
+  display: flex;
+}
+
+.menu_header li a
+{
+  margin-right: 5em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.header_text
+{
+  width: 60%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}

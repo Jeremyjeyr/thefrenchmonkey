@@ -18,6 +18,8 @@ wp_enqueue_style( 'main_style' );
 wp_register_style( 'bootstrap_style', CSS_URL.'/bootstrap.min.css' );
 wp_enqueue_style( 'bootstrap_style' );
 
+wp_register_style( 'google_font', 'https://fonts.googleapis.com/css?family=Roboto:400,500,700' );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'ajout_scripts' );

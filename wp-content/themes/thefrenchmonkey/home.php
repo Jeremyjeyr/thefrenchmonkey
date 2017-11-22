@@ -9,11 +9,28 @@
 );
   $args2 = array(
 'post_type' => 'animation',
-'posts_per_page' => 10
-);
+'posts_per_page' => 8,
+'tax_query' => array(
+	array(
+		'taxonomy' => 'format',
+		'field'    => 'slug',
+		'terms'    => 'facebook'
+	),
+));
+$args3 = array(
+'post_type' => 'animation',
+'posts_per_page' => 2,
+'tax_query' => array(
+array(
+  'taxonomy' => 'format',
+  'field'    => 'slug',
+  'terms'    => 'vimeo'
+),
+));
 // The Query
 $everyday = new WP_Query( $args1 );
 $animation = new WP_Query( $args2 );
+$animation16_9 = new WP_Query( $args3 );
 
 // Render of the day -> Everyday
 if ( $everyday->have_posts() ) {
@@ -81,24 +98,27 @@ if( $file ): ?>
 }
  ?>
 </section>
-<section>
-  <?php
-  // animation
-  if ( $animation->have_posts() ) {
-   while ( $animation->have_posts() ) {
-     $animation->the_post();
-     // TO DO : A trier selon animation carré ou pas
-  ?>
-  <?php $animation_url = get_field('animation_url'); ?>
-    <iframe class="col-sm-3" src="<?php echo $animation_url ?>" width="380" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+</div>
+<div class="container">
+  <section>
+    <?php
+    // animation
+    if ( $animation->have_posts() ) {
+     while ( $animation->have_posts() ) {
+       $animation->the_post();
+       // TO DO : A trier selon animation carré ou pas
+    ?>
+    <?php $animation_url = get_field('animation_url'); ?>
+      <iframe class="col-sm-10" src="<?php echo $animation_url ?>" width="380" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
 
-  <?php
-}
- /* Restore original Post Data */
-            wp_reset_postdata();
-} else {
-// no posts found
-}
-?>
-</section>
+    <?php
+  }
+   /* Restore original Post Data */
+              wp_reset_postdata();
+  } else {
+  // no posts found
+  }
+  ?>
+  </section>
+</div>
 <?php get_footer(); //appel du template footer.php ?>

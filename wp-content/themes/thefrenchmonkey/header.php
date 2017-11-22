@@ -24,7 +24,7 @@
                 wp_nav_menu($args);
 
                   ?>
-                  <a href="#"><img class="logo" src="http://localhost/thefrenchmonkey/wp-content/uploads/2017/11/logo.png" alt="logo_the_french_monkey">
+                  <a href="#"><img class="logo" src="http://localhost:8888/thefrenchmonkey/wp-content/uploads/2017/11/static1.squarespace.png" alt="logo_the_french_monkey">
           </a>
 
         </div>

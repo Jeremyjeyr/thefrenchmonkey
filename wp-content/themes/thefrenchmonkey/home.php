@@ -8,22 +8,26 @@
   'posts_per_page' => 1
 );
   $args2 = array(
-'post_type' => 'everydays',
+'post_type' => 'animation',
+'posts_per_page' => 10
 );
 // The Query
-$the_query1 = new WP_Query( $args1 );
-$the_query2 = new WP_Query( $args2 );
+$everyday = new WP_Query( $args1 );
+$animation = new WP_Query( $args2 );
 
-// Render of the day
-if ( $the_query1->have_posts() ) {
- while ( $the_query1->have_posts() ) {
-   $the_query1->the_post();
+// Render of the day -> Everyday
+if ( $everyday->have_posts() ) {
+ while ( $everyday->have_posts() ) {
+   $everyday->the_post();
+
+   $date = get_field('everydays_date');
+   $date = new DateTime($date);
     ?>
 
     <article>
-     <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_field('title'); ?></a></h2>
+     <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">[<?php echo $date->format('d-m-y'); ?>]-<?php the_field('title'); ?></a></h2>
 
-     <?php // Affichage des logiciels utilisés
+     <!-- <?php // Affichage des logiciels utilisés
      $terms = get_field('software');
      if( $terms ): ?>
 
@@ -46,7 +50,7 @@ if ( $the_query1->have_posts() ) {
        <?php endforeach; ?>
        </ul>
 
-     <?php endif; ?>
+     <?php endif; ?> -->
 
 
      <?php // Affichage de l'image
@@ -58,6 +62,15 @@ if ( $the_query1->have_posts() ) {
        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" class="col-sm-5"/>
 
      <?php endif; ?>
+
+<?php
+$file = get_field('project_file');
+
+if( $file ): ?>
+
+	<a href="<?php echo $file['url']; ?>"><?php echo $file['filename']; ?>[<?php echo $date->format('d-m-y'); ?>]</a>
+
+<?php endif; ?>
    </article>
    <?php
  }
@@ -67,5 +80,25 @@ if ( $the_query1->have_posts() ) {
  // no posts found
 }
  ?>
+</section>
+<section>
+  <?php
+  // animation
+  if ( $animation->have_posts() ) {
+   while ( $animation->have_posts() ) {
+     $animation->the_post();
+     // TO DO : A trier selon animation carré ou pas
+  ?>
+  <?php $animation_url = get_field('animation_url'); ?>
+    <iframe class="col-sm-3" src="<?php echo $animation_url ?>" width="380" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+
+  <?php
+}
+ /* Restore original Post Data */
+            wp_reset_postdata();
+} else {
+// no posts found
+}
+?>
 </section>
 <?php get_footer(); //appel du template footer.php ?>

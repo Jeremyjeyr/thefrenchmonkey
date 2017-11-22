@@ -37,6 +37,16 @@ $labels = array(
     );
 
     register_post_type($post_type, $args );
+    $taxonomy = "format";
+    $object_type = array("animation");
+
+    $args = array(
+        'label' => __( 'Format' ),
+        'rewrite' => array( 'slug' => 'format' ),
+        'hierarchical' => true,
+
+      );
+        register_taxonomy( $taxonomy, $object_type, $args );
 
 }
 add_action( 'init', 'ajout_custom_type_init_animation' );

@@ -18,10 +18,13 @@ $everyday2 = new WP_Query( $args2 );
 if ( $everyday1->have_posts() ) {
  while ( $everyday1->have_posts() ) {
    $everyday1->the_post();
+
+   $date = get_field('everydays_date');
+   $date = new DateTime($date);
     ?>
 
     <article>
-     <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_field('title'); ?></a></h2>
+     <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">[<?php echo $date->format('d-m-y'); ?>]-<?php the_field('title');?></a></h2>
 
      <?php // Affichage des logiciels utilisés
      $terms = get_field('software');
@@ -35,7 +38,7 @@ if ( $everyday1->have_posts() ) {
 
      <?php endif; ?>
 
-
+     <h3>Renderer</h3
      <?php // Affichage du renderer utilisé
      $terms = get_field('renderer');
      if( $terms ): ?>

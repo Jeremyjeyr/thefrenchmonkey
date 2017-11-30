@@ -59,6 +59,16 @@ $labels = array(
               'hierarchical' => true,
       );
               register_taxonomy( $taxonomy, $object_type, $args );
+
+              $taxonomy = "project_file_include";
+              $object_type = array("everydays");
+
+              $args = array(
+                  'label' => __( 'Project file Include' ),
+                  'rewrite' => array( 'slug' => 'project_file_include' ),
+                  'hierarchical' => true,
+          );
+                  register_taxonomy( $taxonomy, $object_type, $args );
 }
 add_action( 'init', 'ajout_custom_type_init_everydays' );
 
